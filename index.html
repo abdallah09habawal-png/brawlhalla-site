@@ -431,3 +431,31 @@ document.getElementById("result").innerText = result;
 
 
 <body>
+<section id="stats-section" style="background-color: #0d0d0d; color: #58ff9d; padding: 40px 20px; text-align: center;">
+  <h2>📊 إحصائيات التقييم</h2>
+  <p id="total-ratings">عدد التقييمات: 0</p>
+  <p id="average-rating">متوسط التقييم: 0</p>
+</section>
+
+<section id="visitor-counter" style="background-color: #0d0d0d; color: #58ff9d; padding: 40px 20px; text-align: center;">
+  <h2>👥 عدد الزوار</h2>
+  <p id="visitor-count">جارٍ التحميل...</p>
+</section>
+
+<script>
+  // تحميل العدد من Local Storage
+  let count = localStorage.getItem("visitorCount");
+
+  // إذا أول زيارة، ابدأ من 1
+  if (!count) {
+    count = 1;
+  } else {
+    count = parseInt(count) + 1;
+  }
+
+  // حفظ العدد الجديد
+  localStorage.setItem("visitorCount", count);
+
+  // عرض العدد
+  document.getElementById("visitor-count").textContent = "أنت الزائر رقم: " + count;
+</script>
